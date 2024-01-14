@@ -35,7 +35,7 @@ class BlogList(ListView):
 
 @login_required
 def blog_details(request, slug):
-    blog = Blog.object.get(slug=slug)
+    blog = Blog.objects.get(slug=slug)
     comment_form = CommentForm()
     already_liked = Likes.objects.filter(blog=blog, user=request.user)
     if already_liked:

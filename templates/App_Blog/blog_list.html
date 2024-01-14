@@ -4,7 +4,6 @@
 {% block body_block %}
 
 {% for blog in blogs %}
-{% endfor %}
 <h3>{{ blog.blog_title }}</h3>
 <h6><i>{{ blog.publish_date }}</i></h6>
 <div class="row">
@@ -18,5 +17,6 @@
     </div>
 </div>
 <hr>
+{% endfor %}
 
 {% endblock %}
