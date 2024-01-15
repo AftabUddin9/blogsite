@@ -49,7 +49,7 @@ def blog_details(request, slug):
             comment.user = request.user
             comment.blog = blog
             comment.save()
-            return HttpResponseRedirect(reverse('App_Blog:blog_details', kwargs={'slug:': slug}))
+            return HttpResponseRedirect(reverse('App_Blog:blog_details', kwargs={'slug': slug}))
 
     return render(request, 'App_Blog/blog_details.html', context={'blog': blog, 'comment_form': comment_form, 'liked': liked,})
 
@@ -62,7 +62,7 @@ def liked(request, pk):
     if not already_liked:
         liked_post = Likes(blog=blog, user=user)
         liked_post.save()
-    return HttpResponseRedirect(reverse('App_Blog:blog_details', kwargs={'slug:': blog.slug}))
+    return HttpResponseRedirect(reverse('App_Blog:blog_details', kwargs={'slug': blog.slug}))
 
 
 @login_required
@@ -71,7 +71,7 @@ def unliked(request, pk):
     user = request.user
     already_liked = Likes.objects.filter(blog=blog, user=user)
     already_liked.delete()
-    return HttpResponseRedirect(reverse('App_Blog:blog_details', kwargs={'slug:': blog.slug}))
+    return HttpResponseRedirect(reverse('App_Blog:blog_details', kwargs={'slug': blog.slug}))
 
 
 class UpdateBlog(LoginRequiredMixin, UpdateView):
